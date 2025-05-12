@@ -9,12 +9,12 @@ interface PageProps {
     card123: {
       title: "සුභ වෙසක්!",
       description: "ඔබට සහ ඔබගේ පවුලට සාමය පිරුණු වෙසක් උත්සවයක් වේවා!",
-      image: "https://yourdomain.com/images/card123.jpg",
+      image: "https://vesakcard-five.vercel.app/card/img1.png",
     },
     card456: {
       title: "Happy Vesak!",
       description: "Wishing you a peaceful and joyful Vesak.",
-      image: "https://yourdomain.com/images/card456.jpg",
+      image: "https://vesakcard-five.vercel.app/card/img1.png",
     },
   };
   
