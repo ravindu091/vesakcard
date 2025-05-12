@@ -1,32 +1,40 @@
-// app/vesak/[id]/page.tsx
 import { Metadata } from "next";
 
-type Props = {
-  params: { id: string };
-};
+interface CardData {
+  [key: string]: {
+    title: string;
+    description: string;
+    image: string;
+  };
+}
 
-// Simulate fetching Vesak card data by ID
-const cardData: Record<string, { title: string; description: string; image: string }> = {
+const cardData: CardData = {
   card123: {
     title: "සුභ වෙසක්!",
     description: "ඔබට සහ ඔබගේ පවුලට සාමය පිරුණු වෙසක් උත්සවයක් වේවා!",
-    image: "https://vesakcard-five.vercel.app/card/img1.jpg",
+    image: "https://yourdomain.com/images/card123.jpg",
   },
   card456: {
     title: "Happy Vesak!",
     description: "Wishing you a peaceful and joyful Vesak.",
-    image: "https://vesakcard-five.vercel.app/card/img1.jpg",
+    image: "https://yourdomain.com/images/card456.jpg",
   },
 };
 
-// Dynamic OG metadata
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+// 👇 Correctly typed params object
+type PageProps = {
+  params: {
+    id: string;
+  };
+};
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const card = cardData[params.id];
 
   if (!card) {
     return {
       title: "Vesak Card",
-      description: "Celebrate Vesak with a custom message.",
+      description: "Celebrate Vesak with a custom greeting.",
     };
   }
 
@@ -43,16 +51,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function VesakCardPage({ params }: Props) {
+export default function VesakCardPage({ params }: PageProps) {
   const card = cardData[params.id];
 
-  if (!card) return <p>Card not found</p>;
+  if (!card) {
+    return <div className="p-8 text-center">Card not found.</div>;
+  }
 
   return (
     <main className="p-8 text-center">
       <h1 className="text-4xl mb-4">{card.title}</h1>
       <p className="mb-6">{card.description}</p>
-      <img src={card.image} alt="Vesak Card Image" className="mx-auto" />
+      <img src={card.image} alt="Vesak Card" className="mx-auto rounded-lg shadow" />
     </main>
   );
 }
