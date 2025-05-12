@@ -5,7 +5,8 @@ const cardData: Record<string, { title: string; description: string; image: stri
     card123: {
       title: "සුභ වෙසක්!",
       description: "ඔබට සහ ඔබගේ පවුලට සාමය පිරුණු වෙසක් උත්සවයක් වේවා!",
-      image: "https://vesakcard-five.vercel.app/card/img1.png",
+      image:"https://vesakcard-five.vercel.app/card/img1.png"
+      ,
     },
     card456: {
       title: "Happy Vesak!",
