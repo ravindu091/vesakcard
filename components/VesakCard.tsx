@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, CardHeader } from './ui/card'
+import { Card } from './ui/card'
 import Image from 'next/image'
 
 function VesakCard() {
